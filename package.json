@@ -1,0 +1,12 @@
+{
+  "name": "greenhouse-monitor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@gitlab.com:shakedamar/greenhouse-monitor.git",
+  "author": "Shaked Amar",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "node-grovepi": "^2.2.2"
+  }
+}
