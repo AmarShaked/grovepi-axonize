@@ -3,8 +3,28 @@ const GrovePi = require("node-grovepi").GrovePi;
 const Board = GrovePi.board;
 const TemperatureAnalog = GrovePi.sensors.TemperatureAnalog;
 
-const onTemperatureChange = res => {
-  console.log("temp onChange value=" + res.toFixed(1));
+const sendToAxonize = async event => {
+  await fetch("https://axoser.herokuapp.com/event", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      device: "5b3c8ed719ec0c1cfc4107bf",
+      environment: "dev",
+      ...event
+    })
+  });
+
+  console.log(`Sent event ${event.name} to Axonize with value ${event.value}`);
+};
+const onTemperatureChange = async res => {
+  await sendToAxonize({
+    name: "Temperature",
+    type: 7,
+    value: res.toFixed(1)
+  });
 };
 
 const board = new Board({
