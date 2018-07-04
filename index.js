@@ -1,29 +1,25 @@
+const GrovePi = require("node-grovepi").GrovePi;
+const Board = GrovePi.board;
+const TemperatureAnalog = GrovePi.sensors.TemperatureAnalog;
 
+const onTemperatureChange = res => {
+  console.log("temp onChange value=" + res);
+};
 
-var GrovePi = require('node-grovepi').GrovePi
-var Commands = GrovePi.commands
-var Board = GrovePi.board
-var TemperatureAnalog = GrovePi.sensors.TemperatureAnalog
+const board = new Board({
+  debug: true,
+  onError: function(err) {
+    console.log("Something wrong just happened");
+    console.error(err);
+  },
+  onInit: function(res) {
+    if (res) {
+      const tempSensor = new TemperatureAnalog(0);
 
-
-var board = new Board({
-	    debug: true,
-	    onError: function(err) {
-		          console.log('Something wrong just happened')
-		          console.log(err)
-		        },
-	    onInit: function(res) {
-		          if (res) {
-				          console.log('GrovePi Version :: ' + board.version())
-
-				          var lightSensor = new TemperatureAnalog(0)
-				          console.log('Temp Analog Sensor (start watch)')
-				          lightSensor.on('change', function(res) {
-						            console.log('temp onChange value=' + res)
-						          })
-				          lightSensor.watch()
-				        }
-		        }
-	  })
+      tempSensor.on("change", onTemperatureChange);
+      tempSensor.watch();
+    }
+  }
+});
 
 board.init();
