@@ -86,6 +86,10 @@ lodash.padstart@^4.1.0:
   version "4.6.1"
   resolved "https://registry.yarnpkg.com/lodash.padstart/-/lodash.padstart-4.6.1.tgz#d2e3eebff0d9d39ad50f5cbd1b52a7bce6bb611b"
 
+lodash@^4.17.10:
+  version "4.17.10"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
+
 mathjs@3.10.*:
   version "3.10.3"
   resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-3.10.3.tgz#bd6577a8e7ee22ece373838a99e8808fa88d990f"

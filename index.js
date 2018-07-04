@@ -1,3 +1,4 @@
+const _ = require("lodash");
 const GrovePi = require("node-grovepi").GrovePi;
 const Board = GrovePi.board;
 const TemperatureAnalog = GrovePi.sensors.TemperatureAnalog;
@@ -16,7 +17,7 @@ const board = new Board({
     if (res) {
       const tempSensor = new TemperatureAnalog(0);
 
-      tempSensor.on("change", onTemperatureChange);
+      tempSensor.on("change", _.debounce(onTemperatureChange, 10000));
       tempSensor.watch();
     }
   }
