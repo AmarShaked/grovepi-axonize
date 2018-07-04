@@ -4,7 +4,7 @@ const Board = GrovePi.board;
 const TemperatureAnalog = GrovePi.sensors.TemperatureAnalog;
 
 const onTemperatureChange = res => {
-  console.log("temp onChange value=" + res);
+  console.log("temp onChange value=" + res.toFixed(1));
 };
 
 const board = new Board({
@@ -17,7 +17,7 @@ const board = new Board({
     if (res) {
       const tempSensor = new TemperatureAnalog(0);
 
-      tempSensor.on("change", _.debounce(onTemperatureChange, 10000));
+      tempSensor.on("change", _.throttle(onTemperatureChange, 5000));
       tempSensor.watch();
     }
   }
