@@ -1,8 +1,8 @@
 {
-  "name": "greenhouse-monitor",
+  "name": "grovepi-axonize",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@gitlab.com:shakedamar/greenhouse-monitor.git",
+  "repository": "git@github.com:AmarShaked/grovepi-axonize.git",
   "author": "Shaked Amar",
   "license": "MIT",
   "private": true,
