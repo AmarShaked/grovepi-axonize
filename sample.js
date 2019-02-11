@@ -19,6 +19,7 @@ function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
 
+onTemperatureChange(getRandomArbitrary(1, 100));
 setInterval(() => {
   onTemperatureChange(getRandomArbitrary(1, 100));
 }, 5000);

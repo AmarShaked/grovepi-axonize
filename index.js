@@ -14,7 +14,7 @@ const onTemperatureChange = async res => {
       value: res.toFixed(1)
     });
   } catch (error) {
-    console.log(error);
+    console.error("Error on sending event to Axonize", error);
   }
 };
 
