@@ -4,6 +4,8 @@ const Board = GrovePi.board;
 const TemperatureAnalog = GrovePi.sensors.TemperatureAnalog;
 const { sendToAxonize } = require("./axonize");
 
+const THROTTLE_TIME = 5000;
+
 const onTemperatureChange = async res => {
   try {
     await sendToAxonize({
@@ -28,7 +30,7 @@ function handleBoardError(err) {
 function handleBoardInit(res) {
   if (res) {
     const tempSensor = new TemperatureAnalog(0);
-    tempSensor.on("change", _.throttle(onTemperatureChange, 5000));
+    tempSensor.on("change", _.throttle(onTemperatureChange, THROTTLE_TIME));
     tempSensor.watch();
   }
 }
